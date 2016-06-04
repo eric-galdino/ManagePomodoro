@@ -22,10 +22,10 @@ import java.util.concurrent.TimeUnit;
 
 public class FragmentTimer extends Fragment{
 
-    private Button btnPlay, btnStop;
+    private Button btnPlay, btnZerar;
     TextView textViewTime;
     private static final String FORMAT = "%02d:%02d";
-    private boolean playAtivo, stopAtivo;
+    private boolean playAtivo;
     private static ContadorRegressivo contador = null;
 
     public FragmentTimer(){
@@ -37,7 +37,7 @@ public class FragmentTimer extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_timer, container, false);
 
         btnPlay = (Button)rootView.findViewById(R.id.btnPlay);
-        btnStop = (Button)rootView.findViewById(R.id.btnStop);
+        btnZerar = (Button)rootView.findViewById(R.id.btnZerar);
         textViewTime = (TextView)rootView.findViewById(R.id.textViewTime);
 
 
@@ -46,16 +46,16 @@ public class FragmentTimer extends Fragment{
             public void onOneClick(View v) {
                 contador = new ContadorRegressivo(600000, 1000, textViewTime);
                 contador.start();
-                Toast.makeText(getActivity(), "CONTADOR DE ATIVIDADE INICIADA", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "TIMER DA ATIVIDADE INICIADO", Toast.LENGTH_SHORT).show();
                 playAtivo = true;
             }
         });
 
-        btnStop.setOnClickListener(new View.OnClickListener() {
+        btnZerar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(playAtivo = true){
-                    Toast.makeText(getActivity(), "CONTADOR ZERADO", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "TIMER ZERADO", Toast.LENGTH_SHORT).show();
                     contador.start();
                 }else{
                     Toast.makeText(getActivity(), "NÃO PODE SER ZERADO, PQ NEM COMEÇO", Toast.LENGTH_SHORT).show();
