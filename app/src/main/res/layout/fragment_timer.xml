@@ -48,8 +48,16 @@
             android:layout_marginBottom="166dp"
             android:layout_above="@+id/btnStop"
             android:textSize="40sp"
-            android:text="Large Text"
+            android:text="25:00"
             android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INTERVALO"
+            android:id="@+id/btnInter"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 

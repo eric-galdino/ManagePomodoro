@@ -3,6 +3,7 @@ package com.eric.managepomodoro.main;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.os.PersistableBundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,8 @@ import android.widget.TextView;
 
 import com.eric.managepomodoro.R;
 import com.eric.managepomodoro.adapter.SlidingMenuAdapter;
+import com.eric.managepomodoro.communication.Communicator;
+import com.eric.managepomodoro.count.ContadorRegressivo;
 import com.eric.managepomodoro.fragment.FragmentTimer;
 import com.eric.managepomodoro.fragment.FragmentAtividades;
 import com.eric.managepomodoro.fragment.FragmentEstatisticas;
@@ -31,7 +34,7 @@ import java.util.List;
  * Created by Eric on 27/05/2015.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity /*implements Communicator*/ {
 
     private List<ItemSlideMenu> listSliding;
     private SlidingMenuAdapter adapter;
@@ -45,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Init component
         listViewSliding = (ListView) findViewById(R.id.lv_sliding_menu);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         listSliding = new ArrayList<>();
@@ -107,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
+
     }
 
 
@@ -132,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Cria o metodo para substituir o fragment
-
     private void replaceFragment(int pos) {
         Fragment fragment = null;
         switch (pos) {
@@ -156,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-         if(null!=fragment) {
+        if(null!=fragment) {
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.replace(R.id.main_content, fragment);
@@ -164,4 +166,18 @@ public class MainActivity extends AppCompatActivity {
             transaction.commit();
         }
     }
+
+    /*@Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("contador", contador);
+    }*/
+
+
+    /**@Override
+    public void respond(String data) {
+        /*android.app.FragmentManager gerenciador = getFragmentManager();
+        FragmentB gerenciadorFragmentB = (FragmentB) gerenciador.findFragmentById(R.id.fragment2);
+        gerenciadorFragmentB.changerText(data);
+    }*/
 }

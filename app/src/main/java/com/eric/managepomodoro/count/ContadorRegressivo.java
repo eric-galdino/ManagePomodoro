@@ -13,6 +13,10 @@ public class ContadorRegressivo extends CountDownTimer{
 
     private TextView texView;
     private static final String FORMATACAO = "%02d:%02d";
+    private boolean mCacelled = false;
+    private long millisInFuture;
+
+    private long countDownInterval;
 
     /**
      * @param millisInFuture    The number of millis in the future from the call
@@ -23,7 +27,9 @@ public class ContadorRegressivo extends CountDownTimer{
      */
 
     public ContadorRegressivo(long millisInFuture, long countDownInterval, TextView textView) {
-        super(millisInFuture, countDownInterval);
+        super(millisInFuture,countDownInterval);
+        this.millisInFuture = millisInFuture;
+        this.countDownInterval = countDownInterval;
         this.texView = textView;
     }
 
@@ -40,4 +46,38 @@ public class ContadorRegressivo extends CountDownTimer{
     public void onFinish() {
         this.texView.setText("ACABOU");
     }
+
+    public TextView getTexView() {
+        return texView;
+    }
+
+    public void setTexView(TextView texView) {
+        this.texView = texView;
+    }
+
+    public boolean ismCacelled() {
+        return mCacelled;
+    }
+
+    public void setmCacelled(boolean mCacelled) {
+        this.mCacelled = mCacelled;
+    }
+
+    public long getCountDownInterval() {
+        return countDownInterval;
+    }
+
+    public void setCountDownInterval(long countDownInterval) {
+        this.countDownInterval = countDownInterval;
+    }
+
+    public long getMillisInFuture() {
+        return millisInFuture;
+    }
+
+    public void setMillisInFuture(long millisInFuture) {
+        this.millisInFuture = millisInFuture;
+    }
+
+
 }

@@ -21,6 +21,7 @@ public abstract class OnOneOffClickListener implements View.OnClickListener {
 
     //Permite outro click só quando resetar
     public void reset() {
+
         clicado = true;
     }
 }
